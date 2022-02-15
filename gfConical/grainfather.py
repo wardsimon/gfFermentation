@@ -5,9 +5,7 @@ import json
 import requests
 from .conical import Conical
 
-GRAINFATHER_AUTH_URL = "https://community.grainfather.com/api/auth/login"
-GRAINFATHER_TOKENS_URL = "https://community.grainfather.com/api/particle/tokens"
-PARTICLE_EVENT_URL = "https://api.particle.io/v1/devices"
+from . import GRAINFATHER_AUTH_URL, GRAINFATHER_TOKENS_URL, PARTICLE_EVENT_URL
 
 
 class Grainfather:
@@ -24,7 +22,7 @@ class Grainfather:
         gf_session = self._authentication(username, password)
         self._auth_token = gf_session['api_token']
 
-    def getConicals(self):
+    def get_conicals(self):
         particle_sessions = self._getParticleTokens(self._auth_token)
         conicals = []
         for session in particle_sessions:

@@ -8,5 +8,5 @@ setup(
     license='BSD3',
     author='simonward',
     author_email='',
-    description='Connect and control the grainfather conical fermentor'
+    description='Connect and control the Grainfather conical fermenter'
 )

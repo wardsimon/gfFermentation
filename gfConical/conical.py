@@ -2,7 +2,7 @@ __author__ = 'github.com/wardsimon'
 __version__ = '0.0.1'
 
 import requests
-from .grainfather import PARTICLE_EVENT_URL
+from . import PARTICLE_EVENT_URL
 
 
 class Conical:
@@ -15,7 +15,8 @@ class Conical:
         "heating":  ('heatStatus', bool),
         "cooling":  ('coolStatus',  bool),
     }
-    _FUNC = ['setHeat', 'setCool', 'setTarget', 'highActivity', 'dlFirmware', 'startSession', 'manageMode', 'controlFermenting', 'settingControl']
+    _FUNC = ['setHeat', 'setCool', 'setTarget', 'highActivity', 'dlFirmware',
+             'startSession', 'manageMode', 'controlFermenting', 'settingControl']
 
     def __init__(self,  token_session):
         self._token = token_session['access_token']

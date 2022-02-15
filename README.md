@@ -17,7 +17,7 @@ username = ''    # Your username
 password = ''    # Your password
 
 gfIO = Grainfather(username, password)
-conicals = gfIO.getConicals()
+conicals = gfIO.get_conicals()
 for conical in conicals:
     print(conical.temperature)
  ```
