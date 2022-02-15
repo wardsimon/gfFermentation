@@ -11,13 +11,12 @@ pip install gfconical
 
 ## Usage
 ```
-from gfConical.grainfather import Grainfather
+from gfConical import Grainfather
 
 username = ''    # Your username
 password = ''    # Your password
 
 gfIO = Grainfather(username, password)
-conicals = gfIO.get_conicals()
-for conical in conicals:
-    print(conical.temperature)
+for conical in gfIO.conicals:
+    print(f"{conical.name} is at {conical.temperature} with setpoint {conical.target_temperature}")
  ```

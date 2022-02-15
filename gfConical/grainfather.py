@@ -4,7 +4,6 @@ __version__ = '0.0.1'
 import json
 import requests
 from .conical import Conical
-
 from . import GRAINFATHER_AUTH_URL, GRAINFATHER_TOKENS_URL, PARTICLE_EVENT_URL
 
 
@@ -15,14 +14,16 @@ class Grainfather:
         self._password = password
         if username:
             self.authenticate(username, password)
+            self._conicals = self.update_conicals()
 
     def authenticate(self, username, password):
         self._username = username
         self._password = password
         gf_session = self._authentication(username, password)
         self._auth_token = gf_session['api_token']
+        self._conicals = self.update_conicals()
 
-    def get_conicals(self):
+    def update_conicals(self):
         particle_sessions = self._getParticleTokens(self._auth_token)
         conicals = []
         for session in particle_sessions:
@@ -31,6 +32,10 @@ class Grainfather:
             except NameError:
                 pass
         return conicals
+
+    @property
+    def conicals(self):
+        return self._conicals
 
     @staticmethod
     def _authentication(username, password):
