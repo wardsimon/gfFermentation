@@ -11,7 +11,7 @@ pip install gfconical
 
 ## Usage
 ```
-from gfConical import Grainfather
+from gfConical.grainfather import Grainfather
 
 username = ''    # Your username
 password = ''    # Your password
