@@ -6,7 +6,7 @@ long_description = (this_directory / "README.md").read_text()
 
 setup(
     name='gfConical',
-    version='v0.0.1',
+    version='v0.0.2',
     packages=['gfConical'],
     url='https://github.com/wardsimon/gfConical/',
     license='BSD3',
