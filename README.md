@@ -1,6 +1,6 @@
-# gfConical
+# gfConical - Control the Grainfather Conical fermenter.
 
-Python control of the Grainfather Conical fermenter
+This simple package allows for reading the temperature/set point of a Grainfather Conical fermenter and setting of target temperature/pausing. 
 
 ## Install
 gfConical is available on pip
