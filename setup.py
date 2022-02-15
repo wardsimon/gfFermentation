@@ -12,8 +12,8 @@ setup(
     license='BSD3',
     author='simonward',
     author_email='',
-    description='Connect and control the Grainfather conical fermenter'
+    description='Connect and control the Grainfather conical fermenter',
     long_description=long_description,
-    long_description_content_type='text/markdown'
+    long_description_content_type='text/markdown',
     install_requires=[requests]
 )
