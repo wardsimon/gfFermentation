@@ -15,5 +15,5 @@ setup(
     description='Connect and control the Grainfather conical fermenter',
     long_description=long_description,
     long_description_content_type='text/markdown',
-    install_requires=[requests]
+    install_requires=['requests']
 )
