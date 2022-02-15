@@ -1,5 +1,5 @@
 __author__ = 'github.com/wardsimon'
-__version__ = '0.0.1'
+__version__ = '0.0.3'
 
 GRAINFATHER_AUTH_URL = "https://community.grainfather.com/api/auth/login"
 GRAINFATHER_TOKENS_URL = "https://community.grainfather.com/api/particle/tokens"
