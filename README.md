@@ -5,7 +5,7 @@ This simple package allows for reading the temperature/set point of a Grainfathe
 ## Install
 gfConical is available on pip
 ```
-pip install gfconnical
+pip install gfconical
 ```
 
 
