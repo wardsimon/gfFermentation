@@ -4,9 +4,11 @@ from pathlib import Path
 this_directory = Path(__file__).parent
 long_description = (this_directory / "README.md").read_text()
 
+from gfConical import __version__ as gfVersion
+
 setup(
     name='gfConical',
-    version='v0.0.2',
+    version=f'v{gfVersion}',
     packages=['gfConical'],
     url='https://github.com/wardsimon/gfConical/',
     license='BSD3',
