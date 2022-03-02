@@ -2,7 +2,7 @@ __author__ = 'github.com/wardsimon'
 __version__ = '0.0.1'
 
 import json
-import requests
+import httpx
 from .conical import Conical
 from . import GRAINFATHER_AUTH_URL, GRAINFATHER_TOKENS_URL, PARTICLE_EVENT_URL
 
@@ -50,7 +50,7 @@ class Grainfather:
             "Content-Type": "application/json",
             "Accept": "application/json"
         }
-        response = requests.post(GRAINFATHER_AUTH_URL, data=json.dumps(data), headers=headers)
+        response = httpx.post(GRAINFATHER_AUTH_URL, data=json.dumps(data), headers=headers)
         if response.status_code == 200:
             return response.json()
         else:
@@ -65,7 +65,7 @@ class Grainfather:
             "Content-Type": "application/json",
             "Authorization": "Bearer " + token,
         }
-        response = requests.get(GRAINFATHER_TOKENS_URL, headers=headers)
+        response = httpx.get(GRAINFATHER_TOKENS_URL, headers=headers)
         if response.status_code == 200:
             data = response.json()
             if len(data) == 0:
@@ -86,7 +86,7 @@ class Grainfather:
             self.authenticate(self._username, self._password)
             token_session = self._getParticleTokens(self._auth_token)
         for token in token_session:
-            response = requests.get(PARTICLE_EVENT_URL + "?access_token=" + token).json()
+            response = httpx.get(PARTICLE_EVENT_URL + "?access_token=" + token).json()
             if response['id'] == conical.id:
                 conical._token = token['access_token']
 
