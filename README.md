@@ -1,4 +1,4 @@
-# gfFermentation - Control Grainfather fermenter controlers.
+# gfFermentation - Script Grainfather fermenter controlers.
 
 This package allows for reading/controlling a Grainfather Conical fermenter or fermentation device. Currently reading and setting of target temperature/pausing and status is supported. 
 
