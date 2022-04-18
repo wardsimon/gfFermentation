@@ -1,22 +1,23 @@
-# gfConical - Control the Grainfather Conical fermenter.
+# gfFermentation - Control Grainfather fermenter controlers.
 
-This simple package allows for reading the temperature/set point of a Grainfather Conical fermenter and setting of target temperature/pausing. 
+This package allows for reading/controlling a Grainfather Conical fermenter or fermentation device. Currently reading and setting of target temperature/pausing and status is supported. 
 
 ## Install
-gfConical is available on pip
+gfFermentation is available on pip
 ```
-pip install gfconical
+pip install gffermentation
 ```
 
 
 ## Usage
 ```
-from gfConical.grainfather import Grainfather
+from gfFermentation.grainfather import Grainfather
 
 username = ''    # Your username
 password = ''    # Your password
 
-gfIO = Grainfather(username, password)
-for conical in gfIO.conicals:
-    print(f"{conical.name} is at {conical.temperature} with setpoint {conical.target_temperature}")
+gfIO = Grainfather(username, password) # Login to Grainfather (tokens also supported)
+
+for controller in gfIO.controllers:
+    print(controller)
  ```

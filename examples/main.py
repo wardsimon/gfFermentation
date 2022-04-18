@@ -1,5 +1,5 @@
 import sys
-from gfConical.grainfather import Grainfather
+from gfFermentation.grainfather import Grainfather
 
 username = ''    # Your username
 password = ''    # Your password
@@ -11,5 +11,6 @@ if __name__ == "__main__":
         password = args[1]
 
     gfIO = Grainfather(username, password)
-    for conical in gfIO.conicals:
-        print(f"{conical.name} is at {conical.temperature} with setpoint {conical.target_temperature}")
+    for controller in gfIO.controllers:
+        if controller.online:
+            print(f"{controller.name} is at {controller.temperature} with setpoint {controller.target_temperature}")

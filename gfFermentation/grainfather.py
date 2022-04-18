@@ -2,40 +2,41 @@ __author__ = 'github.com/wardsimon'
 __version__ = '0.0.1'
 
 import json
-import httpx
-from .conical import Conical
+import requests
+from .controller import get_device
 from . import GRAINFATHER_AUTH_URL, GRAINFATHER_TOKENS_URL, PARTICLE_EVENT_URL
 
 
 class Grainfather:
-    def __init__(self, username=None, password=None):
-        self._auth_token = ""
+    def __init__(self, username=None, password=None, token=None):
+        self._auth_token = token
         self._username = username
         self._password = password
-        if username:
+        if not token:
             self.authenticate(username, password)
-            self._conicals = self.update_conicals()
+        else:
+            self._controllers = self.update_controllers()
 
     def authenticate(self, username, password):
         self._username = username
         self._password = password
         gf_session = self._authentication(username, password)
         self._auth_token = gf_session['api_token']
-        self._conicals = self.update_conicals()
+        self._controllers = self.update_controllers()
 
-    def update_conicals(self):
+    def update_controllers(self):
         particle_sessions = self._getParticleTokens(self._auth_token)
-        conicals = []
+        controllers = []
         for session in particle_sessions:
             try:
-                conicals.append(Conical(session))
+                controllers.append(get_device(session))
             except NameError:
                 pass
-        return conicals
+        return controllers
 
     @property
-    def conicals(self):
-        return self._conicals
+    def controllers(self):
+        return self._controllers
 
     @staticmethod
     def _authentication(username, password):
@@ -50,7 +51,7 @@ class Grainfather:
             "Content-Type": "application/json",
             "Accept": "application/json"
         }
-        response = httpx.post(GRAINFATHER_AUTH_URL, data=json.dumps(data), headers=headers)
+        response = requests.post(GRAINFATHER_AUTH_URL, data=json.dumps(data), headers=headers)
         if response.status_code == 200:
             return response.json()
         else:
@@ -65,7 +66,7 @@ class Grainfather:
             "Content-Type": "application/json",
             "Authorization": "Bearer " + token,
         }
-        response = httpx.get(GRAINFATHER_TOKENS_URL, headers=headers)
+        response = requests.get(GRAINFATHER_TOKENS_URL, headers=headers)
         if response.status_code == 200:
             data = response.json()
             if len(data) == 0:
@@ -86,7 +87,7 @@ class Grainfather:
             self.authenticate(self._username, self._password)
             token_session = self._getParticleTokens(self._auth_token)
         for token in token_session:
-            response = httpx.get(PARTICLE_EVENT_URL + "?access_token=" + token).json()
+            response = requests.get(PARTICLE_EVENT_URL + "?access_token=" + token).json()
             if response['id'] == conical.id:
                 conical._token = token['access_token']
 
