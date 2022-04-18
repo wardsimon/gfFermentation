@@ -7,9 +7,9 @@ long_description = (this_directory / "README.md").read_text()
 from gfFermentation import __version__ as gfVersion
 
 setup(
-    name='gfConical',
+    name='gfFermentation',
     version=f'v{gfVersion}',
-    packages=['gfConical'],
+    packages=['gfFermentation'],
     url='https://github.com/wardsimon/gfFermentation/',
     license='BSD3',
     author='simonward',
