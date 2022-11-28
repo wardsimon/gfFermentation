@@ -4,11 +4,9 @@ from pathlib import Path
 this_directory = Path(__file__).parent
 long_description = (this_directory / "README.md").read_text()
 
-from gfFermentation import __version__ as gfVersion
-
 setup(
     name='gfFermentation',
-    version=f'v{gfVersion}',
+    version=0.0.6,
     packages=['gfFermentation'],
     url='https://github.com/wardsimon/gfFermentation/',
     license='BSD3',
